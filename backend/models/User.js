@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
   about: String,
 
   fileMeta: {
-    type: Object,   // ⭐ IMPORTANT
+    type: Object,  
     default: null,
   },
 },

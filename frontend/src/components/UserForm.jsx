@@ -3,10 +3,6 @@ import API from "../api/axios";
 
 export default function UserForm() {
 
-  /* ===============================
-     CENTRALIZED STATE
-  =============================== */
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,9 +17,6 @@ export default function UserForm() {
     fileMeta: null,
   });
 
-  /* ===============================
-     TEXT / SELECT HANDLER
-  =============================== */
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -33,9 +26,7 @@ export default function UserForm() {
     });
   };
 
-  /* ===============================
-     CHECKBOX GROUP
-  =============================== */
+
   const handleSkills = (e) => {
     const { value, checked } = e.target;
 
@@ -54,9 +45,6 @@ export default function UserForm() {
     }
   };
 
-  /* ===============================
-     MULTI SELECT
-  =============================== */
   const handleLanguages = (e) => {
     const values = [...e.target.selectedOptions]
       .map((o) => o.value);
@@ -67,9 +55,7 @@ export default function UserForm() {
     });
   };
 
-  /* ===============================
-     FILE METADATA ONLY
-  =============================== */
+
   const handleFile = (e) => {
     const file = e.target.files[0];
 
@@ -85,9 +71,7 @@ export default function UserForm() {
     });
   };
 
-  /* ===============================
-     FRONTEND VALIDATION
-  =============================== */
+
   const validateForm = () => {
     if (!formData.name) return "Name required";
     if (!formData.email) return "Email required";
@@ -95,9 +79,7 @@ export default function UserForm() {
     return null;
   };
 
-  /* ===============================
-     SUBMIT
-  =============================== */
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -118,7 +100,7 @@ export default function UserForm() {
 
       alert("User Registered ✅");
 
-      // Reset Form
+  
       setFormData({
         name: "",
         email: "",
@@ -139,9 +121,7 @@ export default function UserForm() {
     }
   };
 
-  /* ===============================
-     FORM
-  =============================== */
+
   return (
     <form onSubmit={handleSubmit} className="form">
 
@@ -186,7 +166,7 @@ export default function UserForm() {
         />
       </div>
 
-      {/* Gender */}
+    
       <div className="form-group">
         <label>Gender</label>
         <div className="inline">
@@ -214,7 +194,6 @@ export default function UserForm() {
         </div>
       </div>
 
-      {/* Skills */}
       <div className="form-group">
         <label>Skills</label>
         <div className="inline">
@@ -230,7 +209,6 @@ export default function UserForm() {
         </div>
       </div>
 
-      {/* Country */}
       <div className="form-group">
         <select
           name="country"
@@ -243,7 +221,6 @@ export default function UserForm() {
         </select>
       </div>
 
-      {/* Languages */}
       <div className="form-group">
         <label>Languages</label>
         <select multiple value={formData.languages} onChange={handleLanguages}>
